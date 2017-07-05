@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Spring Boot Thymeleaf Hello World Example</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css"
+	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<link rel="stylesheet" th:href="@{/css/home.css}"
+	href="../../css/home.css" />
+
+<script type="text/javascript"
+		src="webjars/bootstrap/3.3.7/js/bootstrap.min.js">
+</script>
+
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Get your ride</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#horses">Our horses</a></li>
+					<li><a href="#history">Our history</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+
+		<div class="starter-template">
+			<h1>Welcome in Equestrian Bialystok Club</h1>
+		</div>
+		<div class="formTemplate">
+			<form method ="post">
+				<table>
+					<thead>Join today</thead>
+					<tbody>
+						<tr>
+							<td><label for="firstName">First Name: </label></td>
+							<td><input type="text" name="firstName"></input></td>	
+						</tr>
+						<tr>
+							<td><label for="lastName">Last Name: </label></td>
+							<td><input type="text" name="lastName"></input></td>				
+						</tr>
+						<tr>
+							<td><label for="phoneNumber">Phone Number: </label></td>
+							<td><input type="text" name="Phone number"></input><br/></td>
+						</tr>
+						<tr>
+							<td><label for="level">Pick your level: </label></td>
+							<td>
+								<select>
+									<option>Beginner</option>
+									<option>Intermediate</option>
+									<option>Experienced</option>
+								</select>
+							</td>			
+						</tr>
+					</tbody>
+				</table>				
+				<input type="submit" text="Go!"></input>					
+			</form>
+		</div>
+		<div class="results">
+			<h2>Our horses: </h2>
+			<ul th:each="horse : ${horses} ">
+				<li>
+					<span th:text="${horse.name}">Nazwa: </span>
+					<span th:text="${horse.description}">Description: </span>
+				</li>
+			</ul>
+			<h2>Our riders: </h2>
+			<ul th:each="rider : ${riders} ">
+				<li>
+					<span th:text="${rider.firstName}">Nazwa: </span>
+					<span th:text="${riders.level}">Description: </span>
+				</li>
+			</ul>
+	
+		</div>
+
+	</div>
+</body>
+</html>
